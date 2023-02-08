@@ -4,8 +4,11 @@ from scipy import sparse
 import logging
 from typing import *
 from sklearn.neighbors import NearestNeighbors
-from .speedboosted import _colDeltaCor, _colDeltaCorLog10, _colDeltaCorSqrt
-from .speedboosted import _colDeltaCorpartial, _colDeltaCorLog10partial, _colDeltaCorSqrtpartial
+try:
+    from .speedboosted import _colDeltaCor, _colDeltaCorLog10, _colDeltaCorSqrt
+    from .speedboosted import _colDeltaCorpartial, _colDeltaCorLog10partial, _colDeltaCorSqrtpartial
+except:
+    print("velocyto.estimation: Failed to load speedboosted code")
 
 
 def colDeltaCor(emat: np.ndarray, dmat: np.ndarray, threads: int=None) -> np.ndarray:
